@@ -12,7 +12,7 @@ $ python my_awesome_program.py
 3. Select some models for the training
 4. Select a reference 
 5. Click the button "predict". Then you will see in the result field the prediction of the application 
-![Command Prompt window](screenshot_gui.PNG)
+![GUI](screenshot_gui_explanation.PNG)
 ## Prerequisites:
 - Python 3.5 / 3.6
 Packages:
