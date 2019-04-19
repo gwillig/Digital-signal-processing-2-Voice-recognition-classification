@@ -4,11 +4,14 @@ It was a part of the master's degree (Electronic Systems Engineering) at Heilbro
 
 * Grade: 1,0 (Very good)
 # How to run:
- * Download or clone the project
- * Open the cmd and run the following line of code:
+ 1. Download or clone the project
+ 2. Open the cmd and run the following line of code:
  ```
 $ python my_awesome_program.py
 ```
+3. Select some models for the training
+4. Select a reference 
+5. Click the button "predict". Then you will see in the result field the prediction of the application 
 ![Command Prompt window](screenshot_gui.PNG)
 ## Prerequisites:
 - Python 3.5 / 3.6
