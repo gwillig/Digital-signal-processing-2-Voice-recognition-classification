@@ -9,7 +9,7 @@ It was a part of the master's degree (Electronic Systems Engineering) at Heilbro
  ```
 $ python my_awesome_program.py
 ```
-
+![Command Prompt window](screenshot_gui.PNG)
 ## Prerequisites:
 - Python 3.5 / 3.6
 Packages:
