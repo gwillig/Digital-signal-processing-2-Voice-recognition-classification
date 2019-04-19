@@ -1,0 +1,28 @@
+\usepackage{setspace}	%zeilenabstand
+
+\makeatletter
+\newcommand{\MSonehalfspacing}{%
+  \setstretch{1.44}%  default
+  \ifcase \@ptsize \relax % 10pt
+    \setstretch {1.448}%
+  \or % 11pt
+    \setstretch {1.399}%
+  \or % 12pt
+    \setstretch {1.433}%
+  \fi
+}
+
+\newcommand{\MSdoublespacing}{%
+  \setstretch {1.92}%  default
+  \ifcase \@ptsize \relax % 10pt
+    \setstretch {1.936}%
+  \or % 11pt
+    \setstretch {1.866}%
+  \or % 12pt
+    \setstretch {1.902}%
+  \fi
+}
+\makeatother
+
+
+\onehalfspacing

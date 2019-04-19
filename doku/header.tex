@@ -1,0 +1,342 @@
+\documentclass[%
+	12pt, 
+	a4paper,
+	oneside, 
+	ngerman,
+	bibtotoc,
+	dvipsnames,
+	table,
+]{scrartcl}
+
+\usepackage{wrapfig} 
+\usepackage[printonlyused]{acronym}
+
+%\usepackage{tikz}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+%\usepackage{struktex}
+
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+    \usepackage{polyglossia} % -ak-
+  \setmainlanguage[%
+  	spelling=new,%old
+  	latesthyphen=true,%false
+	%babelshorthands=true,%false
+	]{german} % -ak-
+  %\setmainlanguage[variant=american]{english} % -ak-
+  \usepackage{xecolor}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+    \newcommand{\euro}{€}
+    \usepackage[ngerman]{babel} % -ak-
+    \usepackage{color}
+  \else
+    \usepackage[utf8]{inputenc}
+    \usepackage[TS1,T1]{fontenc} % -ak- T1 für \textdblquotedown
+    \usepackage{lmodern} % -ak-
+%   \usepackage{tgbonum}	% Bookman
+%   \usepackage{tgpagella}	% Palatino
+%   \usepackage{tgtermes}	% Times
+%   \usepackage{tgschola}	% Century Schoolbook
+%   \usepackage{iwona}	% 
+%   \usepackage{anttor}
+    \usepackage[ngerman]{babel}
+    \usepackage{color}    
+  \fi
+\fi
+
+
+% Format A4
+\typearea[3mm]{13}
+
+% Format A5
+%\setlength{\paperwidth}{14.8cm}
+%\setlength{\paperheight}{21cm}
+%\typearea[2mm]{13}
+
+% Format Taschenbuch
+%\setlength{\paperwidth}{12cm}
+%\setlength{\paperheight}{19cm}
+%\typearea[2mm]{12}
+
+% Format iPad
+%\setlength{\paperwidth}{14,5cm}
+%\setlength{\paperheight}{19cm}
+%\typearea{13}
+
+% Format iPod
+%\setlength{\paperwidth}{9cm}
+%\setlength{\paperheight}{11,5cm}
+%\typearea{14}
+
+
+
+\ifxetex
+\else
+	\usepackage{microtype}
+\fi
+\raggedbottom
+\emergencystretch 0.8em
+
+\definecolor{gcolor}{rgb}{0,0,0} % schwarz
+
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+
+%\usepackage{biblatex}
+
+%\bibliography{$biblio-files$}
+
+%\usepackage{fancyvrb}
+
+% Redefine labelwidth for lists; otherwise, the enumerate package will cause
+% markers to extend beyond the left margin.
+\makeatletter\AtBeginDocument{%
+  \renewcommand{\@listi}
+    {\setlength{\labelwidth}{4em}}
+}\makeatother
+\usepackage{enumerate}
+
+\usepackage{ctable}
+\usepackage{float} % provides the H option for float placement
+
+\usepackage{url}
+
+\usepackage{graphicx}
+
+
+
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+%\makeatletter
+%\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+%\else\Gin@nat@width\fi}
+%\makeatother
+%\let\Oldincludegraphics\includegraphics
+%\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+
+\usepackage{verbatim}
+
+\usepackage{nameref}
+
+
+\newcommand{\seclabel}[1]{
+\label{sec:#1}
+}
+
+\newcommand{\secnameref}[1]{
+\nameref{sec:#1}
+}
+
+\newcommand{\secnamerefn}[1]{
+\ref{sec:#1}: \nameref{sec:#1}
+}
+
+\newcommand{\secnamerefnpb}[1]{
+Kapitel\secnamerefn{#1}auf Seite \pageref{sec:#1}
+}
+
+\newcommand{\secnamerefnpbf}[1]{
+Kapitel\secnamerefn{#1}auf Seite \pageref{sec:#1}.
+}
+
+\newcommand{\secnamerefnp}[1]{
+(Kapitel\secnamerefn{#1}auf Seite \pageref{sec:#1})
+}
+
+
+
+\usepackage{float}
+\floatstyle{boxed}
+\restylefloat{figure}
+
+\newcommand{\figref}[1]{
+Abb.~\ref{fig:#1}
+}
+
+\newcommand{\figreflong}[1]{
+Abbildung~\ref{fig:#1}
+}
+
+\newcommand{\figrefp}[1]{
+\figref{#1} auf Seite~\pageref{fig:#1}
+}
+
+
+% @acuda
+% change to alternative figure numbering
+% default:  in book class figures are numbered per chapter
+%           in article class figures are numbred continuously
+%
+% change book-class default to continuosly behavior:
+% \usepackage{chngcntr}
+% \counterwithout{figure}{chapter}
+%
+% change article-class default to per chapter (section) style:
+\usepackage{chngcntr}
+%\counterwithin{figure}{section}
+
+
+% @acuda
+% generate new appendix behavior
+% now add caption to toc without numbering
+\let\Oldappendix\appendix
+\def\appendix{
+	\Oldappendix
+	%\phantomsection 
+	\addcontentsline{toc}{section}{Anhang}
+	\renewcommand\refname{Anhang} \section*{Anhang}
+}
+
+% @acuda #####################
+%add for centered captions following options: justification=justified, singlelinecheck=false
+\usepackage[font=small, labelfont=bf]{caption}
+\usepackage{subcaption}
+
+\KOMAoptions{parskip=half}
+%\addtokomafont{caption}{\footnotesize} %lable captions smaller...
+
+
+\usepackage{blindtext} 
+
+\usepackage{bibgerm}
+%\usepackage{titlesec}	%clearpage (newpage with correct floating enviroment) before sections
+\newcommand{\sectionbreak}{\clearpage}
+
+
+
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex,
+              bookmarks=true,
+              pdfauthor={$author-meta$},
+              pdftitle={$title-meta$},
+              colorlinks=true,
+              urlcolor=blue,
+              linkcolor=blue]{hyperref}
+\else
+  \usepackage[unicode=true,
+              bookmarks=true,
+              pdfauthor={$author-meta$},
+              pdftitle={$title-meta$},
+              colorlinks=false,
+              urlcolor=blue,
+              linkcolor=blue]{hyperref}
+\fi
+\hypersetup{breaklinks=true, pdfborder={0 0 0}}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+
+\usepackage{textcomp}
+
+\usepackage{csquotes}
+
+\usepackage{multirow}
+\usepackage{pdflscape}
+
+\setcounter{tocdepth}{3}
+
+
+%%%% Eigene Kopf und Fußzeile %%%%%%%%%%%%%%%% 
+%\usepackage{scrpage2}%                              Package laden 
+%\pagestyle{scrheadings}%                           SCRPAGE2 Style aktivieren 
+%\clearscrheadfoot%                                    lösche alle Kopf und Fußzeilen 
+%\setheadwidth{textwithmarginpar}%             für textbreite+rand 
+%\automark{chapter}%                                    Autoerkenneung Chapter 
+%\ohead{\textbf{\pagemark}}%                      Seitenzahl 
+%\renewcommand{\chaptermark}[1]{\markright{\ #1}} %löscht die Nummerierung von Chapter 
+%\ihead{\textbf{\rightmark}} 
+%%%%%%%%%% Striche Kopfzeile %%%%%%%%%%%%% 
+%\setheadtopline{2pt}[\color{blue}] 
+%\setheadsepline{1pt}[\color{blue}] 
+
+
+
+\usepackage[%
+	automark,
+	headsepline,                %% Separation line below the header
+	%footsepline,               %% Separation line above the footer
+	markuppercase
+]{scrpage2}
+\automark[%
+	%subsection  % durch renewcommand gelöst?
+]{section}
+\pagestyle{scrheadings}
+\renewcommand{\sectionmark}[1]{\markright{\ #1}} %löscht die Nummerierung von Chapter 
+
+\lefoot{}                      %% Bottom left on even pages
+\lofoot{}                      %% Bottom left on odd pages
+\refoot{}                      %% Bottom right on even pages
+\rofoot{}                      %% Bottom right on odd pages
+\cfoot{--~\pagemark~--}        %% Bottom center
+ 
+%\lehead{\bfseries\pagemark}    %% Top left on even pages
+%\lohead{\bfseries\headmark}    %% Top left on odd pages
+%\rehead{\bfseries\headmark}    %% Top right on even pages
+\rohead{\headmark}    %% Top right on odd pages
+\chead{}                       %% Top center
+%\renewcommand{\subsectionmark}[1]{\markright{\ #1}} %löscht die Nummerierung von Chapter 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C M D :   E I G E N N A M E N
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\en}[1]{%
+\glqq\textit{#1}\grqq%
+}
+
+
+\usepackage{listings}
+%\input{listings-python-setup}
+%\input{python-function-definition-setup}
+
+\input{setup-line-spacing}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% TEXT ANNOTATIONS		
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\note}[1]{
+\textcolor{orange}{\textbf{Notiz:} #1}
+}
+
+\makeatletter
+\newcommand{\todo}[1]{
+\textcolor{blue}{\textbf{ToDo:} #1}
+}
+
+
+
+
+\let\oldcite\cite%
+\renewcommand{\cite}[2][]{%
+	\ifx&#1&%
+		\mbox{\oldcite{#2}}%
+	\else%
+		\mbox{\oldcite[#1]{#2}}%
+	\fi%
+}
+
+\newcommand*{\eqcite}[2][]{%
+	\vadjust{%
+	    \smallskip
+	    \hbox to \linewidth{\hfill%
+			\ifx&#1&%
+				\cite{#2}%
+			\else%
+				\cite[#1]{#2}%
+			\fi%
+	    }%
+	}%
+}%

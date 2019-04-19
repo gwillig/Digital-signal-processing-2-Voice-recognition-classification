@@ -1,0 +1,42 @@
+\section{Planung und Vorbereitungen}
+
+Die Bearbeitung der Projektaufgabe erfolgt in der Programmsprache \en{Python}, da die Gruppenmitglieder hier bereits einige Vorkenntnisse mitbringen. 
+Ein weiterer Vorteil von Python ist dessen Plattformunabhängigkeit, wodurch das Projekt ohne Anpassungen sowohl auf Linux- als auch auf Windows-Betriebssystemen lauffähig ist.
+
+Zum Trainieren von verschiedenen Modellen wurden zunächst die Wörter in der nachfolgenden Tabelle \ref{tab:recorded_words} erzeugt.
+Für jedes Wort liegen insgesamt 54 Merkmalsvektorfolgen vor.
+Dabei stammen jeweils 36 von zwei männlichen Sprechern und 18 von einer weiblichen Sprecherin. 
+Um die Abhängigkeit der Klassifikationsqualität von der Umgebung zu vermindern, wurden die Aufnahmen zur Hälfte in einer ruhigen Umgebung (G117) und mit Hintergrundgeräuschen (A409, laufender Beamer) gesprochen. 
+Weiterhin wurde eine Aufnahme der im jeweiligen Raum herrschenden \en{Stille} erzeugt.
+
+
+\bigskip
+{\setlength{\extrarowheight}{2pt}%
+\begin{table}[!hp]
+\centering
+\begin{tabular}{| c | l |}
+\hline
+Namen		 & Andreas, Gustav, Lisa  \\ \hline
+Zahlen		 & Zwei, Drei               \\ \hline
+Hausaufgaben & Signalverarbeitung, Fouriertransformation \\ \hline
+sonstige 	 & mögen, und 	\\ \hline
+\end{tabular}
+\caption[Erzeugte Merkmalsvektorfolgen]{Erzeugte Merkmalsvektorfolgen}
+\label{tab:recorded_words}
+\end{table}
+\bigskip
+
+
+
+\begin{comment}
+Die Berechnung der Distanzen kann durch verschiedene Methoden erfolgen. Folgenden Methoden wurden verwendet:
+
+\begin{itemize}
+	\item Euklidischer Abstand
+	\item Mahalanobis Abstand
+	\item Abstandsmaß basierend auf der Normalverteilung
+	\item HMM (als Produktfolge)
+	\item HMM (Maximum Approximation)
+	\item HMM (negativ logarithmierte Wahrscheinlichkeiten)
+\end{itemize}
+\end{comment}

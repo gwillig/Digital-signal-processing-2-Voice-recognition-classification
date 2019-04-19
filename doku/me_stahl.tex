@@ -1,0 +1,115 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+% !TEX TS-program = xelatex
+
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
+\DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
+
+\input{header}
+
+% Mit diesem Paket können Farben innerhalb von Tabellen verwendet werden. 
+% Es können Spalten, Zeile oder einzelne Zellen eingefärbt werden.
+\usepackage{colortbl}
+
+
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+
+\begin{document}
+
+\input{titel}
+%\input{urheberschaft}
+
+\typearea[3mm]{13}
+\pagenumbering{roman}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% T O C
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begingroup
+\tableofcontents
+\endgroup
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{2} % reset page counter -> titlepage is not counted
+
+
+\input{chapter/aufgabenstellung}
+\newpage 
+
+\input{chapter/planung}
+\newpage
+
+\input{chapter/klassifikation}
+\newpage
+
+\input{chapter/gui}
+\newpage
+
+
+%\clearpage
+%\listoffigures
+
+%\clearpage
+%\listoftables
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% L I S T   O F   A C R O N Y M S
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% @acuda
+% Append Acronym-List in Document with \appendix
+% for old behavior use \Oldappendix
+% acronym should be the name of the appendix file (linux sort hack)
+% linux hack: sort unsort.tex -o sorted.tex (should called via sh-script)
+% appendix-file entry: \acro{VERWEIS}[ABKÜRZUNG]{AUSGESCHRIEBEN}
+% use acronym:
+%   \ac{lable}      full name only at first usage in text
+%   \acs{lable}     short name only
+%   \acf{lable}     short and full name only
+%   \acl{lable}     full name only
+%\clearpage
+%\phantomsection \addcontentsline{toc}{section}{Acronyms}
+%\begingroup
+%	\renewcommand\refname{Acronyms} \section*{Acronyms}
+%	\sectionmark{Acronyms}
+%	% Format der Abkürzungsdefinition: \acro{}[]{}
+%	% {Verweis}[Abkürzung]{ausgeschriebene Abkürzung}
+%	\begin{acronym}[Library-BindingW] %NMWC YTM
+%		\leftskip1.5em
+%		\setlength{\itemsep}{-\parsep}
+%			\acro{dm}[DM]{dm-drogerie markt GmbH + Co. KG}
+%			\acro{eu}[EU]{European Union}
+%			\acro{gbs}[GBS]{\en{Green Bag Solutions GmbH}}
+%			\acro{kik}[KiK]{KiK Textilien und Non-Food GmbH}
+%			\acro{smart}[SMART]{Specific Measurable Accepted Realistic and Time}
+%			\acro{wbs}[WBS]{\en{Work Breakdown Structure}}
+%			\acrodefplural{wbs}[WBSs]{\en{Work Breakdown Structures}}
+%			\acro{lip}[LiP]{\en{Leading in Projects}}
+%	\end{acronym}
+%\endgroup
+
+
+%\clearpage
+%{
+%\renewcommand{\refname}{Bibliography}
+%\bibliographystyle{alphadin}
+%\bibliography{source/source} 
+%}
+%
+%
+%\clearpage
+%\input{appendix/_appendix}
+
+
+\end{document}

@@ -1,0 +1,153 @@
+\section{Klassifikation}
+
+Da die Software im Laufe des Projektes stetig weiterentwickelt wurde, steht zur Berechnung der Kosten bzw. Wahrscheinlichkeiten nur die am Besten funktionierende Methode zur Verfügung, \en{HMM mit maximum Approximation}.
+
+\note{Bei Einzelwörtern hat der Sprecher ein besseres Ergebnis als All. Bei Wortfolgen schneidet das Modell All besser ab, als der eigentliche Sprecher!}
+
+\subsection{Einzelworterkennung}
+
+Die folgenden Tabellen zeigen ...
+
+
+\begin{table}[!hp]
+\centering
+%\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Stillemodell 			& Referenzmodell 	  & Getestetes Wort 	& Kosten \\ \hline \hline
+\rowcolor{green!50} A409& Drei\_Andreas\_A409 & Drei\_Andreas 	& -168,04 \\ \cline{3-4}
+						&				 	  & Drei\_Gustav  	&  198,98 \\ \cline{3-4}
+						&					  & Drei\_Lisa	  	&  113,26 \\ \hline \hline
+A409					& Drei\_All\_409	  & Drei\_Andreas 	& -95,74 \\ \cline{3-4}
+						&				 	  & Drei\_Gustav  	& -46,10 \\ \cline{3-4}
+\rowcolor{green!50}		&					  & Drei\_Lisa	  	& -112,95 \\ \hline \hline
+\rowcolor{green!50} G117& Drei\_Andreas\_A409 & Drei\_Andreas 	& -179,47 \\ \cline{3-4}
+						&				 	  & Drei\_Gustav  	& 89,10\\ \cline{3-4}
+						&					  & Drei\_Lisa	  	& 12,85 \\ \hline \hline
+G117					& Drei\_All\_A409	  & Drei\_Andreas 	& -105,82 \\ \cline{3-4}
+						&				 	  & Drei\_Gustav  	& -57,20 \\ \cline{3-4}
+\rowcolor{green!50}		&					  & Drei\_Lisa	  	& -125,85  \\ \hline \hline
+\end{tabular}
+\caption[Getestete Prädiktion für das Stillemodell A409]{Getestete Prädiktion für das Stillemodell A409}
+\label{tab:predict_G117}
+\end{table}
+
+
+\begin{table}[!hp]
+\centering
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Stillemodell & Getestet	für 	 			 & Wort 	 & Sprecher & Kosten \\\hline\hline
+A409        & Signalverarbeitung\_Gustav\_G117 & Signalverarbeitung & Gustav &  230,60		\\ \hline
+G117		& Signalverarbeitung\_Gustav\_G117 & Signalverarbeitung	& Gustav & 225,27	\\ \hline
+A409		& Zwei\_Lisa\_A409				 & Zwei & Lisa & -210,28	\\ \hline
+G117		& Zwei\_Lisa\_A409				 & Zwei & Lisa & -235,00 \\ \hline
+\end{tabular}
+\caption[Prädiktion mit Sprechererkennung]{Prädiktion mit Sprechererkennung}
+\label{tab:predict_all_modells}
+\end{table}
+
+\newpage
+\begin{table}[!hp]
+\centering
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Stillemodell & Getestet	für 	 			 & Wort 	 & Kosten \\\hline\hline
+A409        & Signalverarbeitung\_Gustav\_G117 & Signalverarbeitung  & 447,73  		\\ \hline
+G117		& Signalverarbeitung\_Gustav\_G117 & Signalverarbeitung & 442,40	\\ \hline
+A409		& Zwei\_Lisa\_A409			& Zwei & 28,13	\\ \hline
+G117		& Zwei\_Lisa\_A409			& Zwei & 21,17	\\ \hline
+\end{tabular}
+\caption[Prädiktion mit veralgemeinerten Modellen]{Prädiktion mit veralgemeinerten Modellen}
+\label{tab:predict_ALL}
+\end{table}
+
+
+
+\bigskip
+\subsection{Wortfolgenerkennung}
+
+Da es wie bei der Einzelworterkennung kaum einen Unterschied zwischen dem verwendetem Stillemodell gibt, werden für die folgenden Tests nur G117 verwendet.
+Aufgrund der sonst übergroßen Breite der Tabellen wird das Wort \en{Fouriertransformation} mit FT und \en{Signalverarbeitung} mit SV abgekürzt.
+
+\begin{table}[!hp]
+\centering
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l||l|l|l|}
+\hline
+Gesprochenes Wort & Andreas & Gustav  & Lisa 	\\\hline\hline
+Lisa     		   & Lisa 	 & Lisa	   & Lisa	\\ \hline
+und		  		   & und  	 & und	   & und	\\ \hline
+Gustav			   & Gustav  & Gustav  & Gustav	\\ \hline
+und				   & 	 	 & und	   & und	\\ \hline
+Andreas			   & Andreas & Andreas & Andreas\\ \hline
+mögen			   & mögen	 & mögen   & mögen	\\ \hline
+SV				   & SV		 & SV	   & SV	\\ \hline
+\end{tabular}
+\caption[Prädiktion mit veralgemeinerten Modellen]{Prädiktion mit veralgemeinerten Modellen}
+\label{tab:predict_ALL_1}
+\end{table}
+
+\begin{table}[!hp]
+\centering
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l||l|l|l|l|l|l|}
+\hline
+Gesprochenes Wort & \multicolumn{2}{|c|}{Andreas} & \multicolumn{2}{|c|}{Gustav} & \multicolumn{2}{|c|}{Lisa} \\ \hline
+		& Wort	 & Sprecher& Wort	& Sprecher & Wort 	& Sprecher\\	\hline \hline
+Lisa    & Lisa 	 & Andreas & Lisa	& Gustav   & Lisa	& Lisa	\\ \hline
+und		& und  	 & Andreas & und	& Gustav   & und	& Lisa	\\ \hline
+Gustav	& Gustav & Andreas & Gustav & Gustav   & Gustav	& Lisa	\\ \hline
+und		& 	 	 & 		   & und	& Gustav   & und	& Lisa	\\ \hline
+Andreas	& Andreas& Andreas & Andreas& Andreas  & Andreas& Andreas \\ \hline
+mögen	& mögen	 & Gustav  & mögen  & Gustav   & mögen	& Lisa	\\ \hline
+SV		& SV	 & Andreas & SV	    & Gustav   & SV		& Lisa	\\ \hline
+\end{tabular}
+\caption[Prädiktion mit Sprechererkennung]{Prädiktion mit Sprechererkennung}
+\label{tab:predict_Speaker_1}
+\end{table}
+
+\newpage
+
+\begin{table}[!hp]
+\centering
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l||l|l|l|}
+\hline
+Gesprochenes Wort & Andreas & Gustav & Lisa 		\\\hline\hline
+				   & 		 & moegen & drei	\\ \hline
+und       		   & und 	 & und	  & und		\\ \hline
+und				   & und  	 & und	  & und			\\ \hline
+				   & 		 & drei	  & \\ \hline
+FT 				   & FT 	 & FT 	  & FT\\ \hline
+zwei			   & zwei 	 & zwei   & zwei	\\ \hline
+drei			   & drei	 & drei   & drei	\\ \hline
+\end{tabular}
+\caption[Prädiktion mit veralgemeinerten Modellen]{Prädiktion mit veralgemeinerten Modellen}
+\label{tab:predict_ALL_2}
+\end{table}
+
+\begin{table}[!hp]
+\centering
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{|l||l|l|l|l|l|l|}
+\hline
+Gesprochenes Wort & \multicolumn{2}{|c|}{Andreas} & \multicolumn{2}{|c|}{Gustav} & \multicolumn{2}{|c|}{Lisa} \\\hline
+	& Wort & Sprecher & Wort & Sprecher & Wort   & Sprecher \\ \hline \hline
+	& und  & Andreas  & drei & Andreas  & zwei   & Andreas	\\ \hline
+und & und  & Gustav	  & und	 & Gustav   & und    & Lisa	\\ \hline
+und	& und  & Andreas  & und	 & Gustav   & und    & Lisa	\\ \hline
+	& 	   & 		  & drei & Andreas  & 	     & 	\\ \hline
+FT 	&  FT  & Andreas  & FT 	 & Gustav   & Andreas& Andreas \\ \hline
+zwei& drei & Andreas  & drei & Andreas  & zwei   & Lisa \\ \hline
+drei& drei & Andreas  & drei & Gustav   & drei   & Lisa \\ \hline
+\end{tabular}
+\caption[Prädiktion mit Sprechererkennung]{Prädiktion mit Sprechererkennung}
+\label{tab:predict_ALL_2}
+\end{table}
+
+
+
+\note{je größer die Pause zwischen den einzelnen Worten desto besser das Klassifikationsergebnis}
