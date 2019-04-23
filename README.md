@@ -17,3 +17,12 @@ $ python my_awesome_program.py
 - Python 3.5 / 3.6
 Packages:
 - numpy (pip install numpy)
+
+## Team
+* Andreas Schneider
+* Lisa-Franziska Schäfer
+
+# License
+The MIT License (MIT)
+
+Copyright (c) 2018 Andreas Schneider, Gustav Willig, Lisa-Franziska Schäfer
